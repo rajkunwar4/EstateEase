@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import SearchBar from "../../components/navbar/searchBar/SearchBar";
 import "./homePage.scss";
+import { AuthContext } from "../../context/AuthContext";
 
 const homePage = () => {
+  const  {currentUser}  = useContext(AuthContext);
+  console.log("currentUser",currentUser);
+  console.log("localstorage.id",JSON.parse(localStorage.getItem("user")));
   return (
     <div className="homePage">
       {/* left side */}
@@ -9,9 +14,9 @@ const homePage = () => {
         <div className="wrapper">
           <h1 className="title">Find Real Estate and get your dream place</h1>
           <p>
-          Discover your dream home with ease. 
-          Explore detailed listings, connect with top agents, and 
-          schedule viewings. Find your perfect property today!
+            Discover your dream home with ease. Explore detailed listings,
+            connect with top agents, and schedule viewings. Find your perfect
+            property today!
           </p>
           <SearchBar />
           <div className="boxes">

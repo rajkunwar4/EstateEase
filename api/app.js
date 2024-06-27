@@ -2,11 +2,11 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
-import mongoose from "mongoose";
 
 import postRoute from "./routes/post.route.js";
 import authRoute from "./routes/auth.route.js";
 import userRoute from "./routes/user.route.js";
+import testRoute from "./routes/test.route.js";
 
 const app = express();
 
@@ -19,6 +19,8 @@ app.use(cookieParser());
 app.use("/api/posts", postRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
+app.use("/api/test", testRoute);
+
 
 app.get("/", (req, res) => {
   res.send("hello, welcome");

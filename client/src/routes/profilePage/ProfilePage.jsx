@@ -1,8 +1,26 @@
 import Chat from "../../components/chat/Chat";
 import List from "../../components/list/List";
 import "./profilePage.scss";
+import apiRequest from "../../lib/apiRequest";
+import { useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const ProfilePage = () => {
+  const { currentUser, updateUser } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const logoutHandler = async () => {
+    try {
+      await apiRequest.post("auth/logout");
+      updateUser(null);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="profilePage">
       <div className="details">
@@ -15,16 +33,20 @@ const ProfilePage = () => {
             <span>
               Avatar:{" "}
               <img
-                src="https://avatars.githubusercontent.com/u/123080253?v=4"
+                src={
+                  currentUser.avatar ||
+                  "https://avatars.githubusercontent.com/u/123080253?v=4"
+                }
                 alt=""
               />
             </span>
             <span>
-              Username: <b>Raj Kunwar</b>
+              Username: <b>{currentUser.username}</b>
             </span>
             <span>
-              Email: <b>40rajkunwar@gmail.com</b>
+              Email: <b>{currentUser.email}</b>
             </span>
+            <button onClick={logoutHandler}>Logout</button>
           </div>
           <div className="title">
             <h1>My List</h1>
@@ -39,7 +61,7 @@ const ProfilePage = () => {
       </div>
       <div className="chatContainer">
         <div className="wrapper">
-          <Chat/>
+          <Chat />
         </div>
       </div>
     </div>

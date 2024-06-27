@@ -8,7 +8,6 @@ export const register = async (req, res) => {
   try {
     //hash the password before storing to db
     const hashedPass = await bcrypt.hash(password, 10);
-    
 
     const newUser = await prisma.user.create({
       data: {
@@ -59,9 +58,16 @@ export const login = async (req, res) => {
       });
     }
     const age = 1000 * 60 * 60 * 24 * 7;
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-      expiresIn: age,
-    });
+    const token = jwt.sign(
+      { id: user.id, isAdmin: true },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: age,
+      }
+    );
+
+    const { password: userPass, ...userInfo } = user;
+
     res
       .cookie("token", token, {
         httpOnly: true,
@@ -69,9 +75,7 @@ export const login = async (req, res) => {
         // secure: true,
       })
       .status(200)
-      .json({
-        message: "user exists, welcome",
-      });
+      .json(userInfo);
   } catch (error) {
     console.log(error);
     return res.status(500).json({
