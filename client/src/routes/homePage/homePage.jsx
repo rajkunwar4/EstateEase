@@ -5,8 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 const homePage = () => {
   const  {currentUser}  = useContext(AuthContext);
-  console.log("currentUser",currentUser);
-  console.log("localstorage.id",JSON.parse(localStorage.getItem("user")));
+  
   return (
     <div className="homePage">
       {/* left side */}

@@ -10,14 +10,14 @@ const Navbar = () => {
   return (
     <nav>
       <div className="left">
-        <a href="" className="logo">
+        <Link to="" className="logo">
           <img src={"/logo.png"} alt="" />
           <span>KunwarEstate</span>
-        </a>
-        <a href="/">Home</a>
-        <a href="/">About</a>
-        <a href="/">Contact</a>
-        <a href="/">Agents</a>
+        </Link>
+        <Link to="/">Home</Link>
+        <Link to="/">About</Link>
+        <Link to="/">Contact</Link>
+        <Link to="/list">Agents</Link>
       </div>
 
       <div className="right">
@@ -58,12 +58,13 @@ const Navbar = () => {
           />
         </div>
         <div className={open ? "menu active" : "menu"}>
-          <a href="/">Home</a>
-          <a href="/">About</a>
-          <a href="/">Contact</a>
-          <a href="/">Agents</a>
-          <a href="/login">Sign in</a>
-          <a href="/register">Sign up</a>
+          <Link>Home</Link>
+          <Link>About</Link>
+          <Link>Contacts</Link>
+          <Link>Agents</Link>
+          <Link to={"/login"}>Sign in</Link>
+          <Link to={"/register"}>Sign up</Link>
+          
         </div>
       </div>
     </nav>

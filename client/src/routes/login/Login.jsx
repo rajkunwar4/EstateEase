@@ -21,7 +21,7 @@ const Login = () => {
     const username = formData.get("username");
     const password = formData.get("password");
 
-    console.log(username, password);
+    // console.log(username, password);
 
     try {
       const res = await apiRequest.post(
@@ -32,7 +32,7 @@ const Login = () => {
         }
       );
 
-      console.log(res.data);
+      // console.log(res.data);
       updateUser(res.data);
       navigate("/");
     } catch (e) {
