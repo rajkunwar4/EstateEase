@@ -1,39 +1,87 @@
-import { useContext } from "react";
+import apiRequest from "../../lib/apiRequest";
+
+import { useContext, useState } from "react";
 import "./profileUpdatePage.scss";
 import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import UploadWidget from "../../components/uploadWidget/UploadWidget";
 
 const ProfileUpdatePage = () => {
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, updateUser } = useContext(AuthContext);
+  const [error, setError] = useState(null);
+  const [avatar, setAvatar] = useState(currentUser.avatar);
+  const navigate = useNavigate();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    const username = formData.get("username");
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    try {
+      const res = await apiRequest.put(`user/${currentUser.id}`, {
+        username,
+        email,
+        password,
+      });
+      console.log("resssss", res);
+      updateUser({ ...currentUser, avatar, username, email });
+
+      navigate("/profile");
+
+      console.log(res);
+    } catch (e) {
+      // setError(e.data.message);
+      setError(e.response.data.message);
+      console.log("errrrrrr", e.response.data.message);
+    }
+  }
 
   return (
     <div className="profileUpdatePage">
       <div className="left">
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <h1>Update Profile</h1>
           <div>
             <p>Username</p>
-            <input type="text" defaultValue={currentUser.username} />
+            <input
+              type="text"
+              defaultValue={currentUser.username}
+              name="username"
+            />
           </div>
           <div>
             <p>Email</p>
-            <input type="text" defaultValue={currentUser.email} />
+            <input type="email" defaultValue={currentUser.email} name="email" />
           </div>
           <div>
             <p>Password</p>
-            <input type="text" />
+            <input type="password" name="password" />
           </div>
           <div>
             <button>Update</button>
           </div>
+          {error && <span>{error}</span>}
         </form>
       </div>
       <div className="right">
         <img
           src={
-            currentUser.avatar ||
-            "https://avatars.githubusercontent.com/u/123080253?v=4"
+            avatar || "https://avatars.githubusercontent.com/u/123080253?v=4"
           }
           alt=""
+        />
+        <UploadWidget
+          uwConfig={{
+            cloudname: "rajkunwar",
+            uploadPreset: "estate",
+            multiple: false,
+            maxImageFileSize: 2000000,
+            folder: "avatars",
+          }}
+          setAvatar={setAvatar}
         />
       </div>
     </div>
