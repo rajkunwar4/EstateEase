@@ -3,7 +3,7 @@ import prisma from "../lib/prisma.js";
 export const getPosts = async (req, res) => {
   try {
     const posts = await prisma.post.findMany();
-    res.json(200).json(posts);
+    res.status(200).json(posts);
   } catch (err) {
     console.log(err);
     return res.status(500).json({
@@ -23,10 +23,10 @@ export const getPost = async (req, res) => {
       include: {
         postDetail: true,
         user: {
-          select:{
-            username:true,
-            avatar:true
-          }
+          select: {
+            username: true,
+            avatar: true,
+          },
         },
       },
     });
@@ -89,7 +89,7 @@ export const deletePost = async (req, res) => {
 
     if (deletePost.userId != tokenId) {
       console.log("tokenid", tokenId);
-      console.log("post id", deleltePost.userId);
+      console.log("post id", deletePost.userId);
 
       return res.status(403).json({
         message: "Not authorized",

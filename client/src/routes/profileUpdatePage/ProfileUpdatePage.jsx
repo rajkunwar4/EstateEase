@@ -1,6 +1,6 @@
 import apiRequest from "../../lib/apiRequest";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./profileUpdatePage.scss";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -9,8 +9,10 @@ import UploadWidget from "../../components/uploadWidget/UploadWidget";
 const ProfileUpdatePage = () => {
   const { currentUser, updateUser } = useContext(AuthContext);
   const [error, setError] = useState(null);
-  const [avatar, setAvatar] = useState(currentUser.avatar);
+  const [avatar, setAvatar] = useState([]);
   const navigate = useNavigate();
+
+
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -25,6 +27,7 @@ const ProfileUpdatePage = () => {
         username,
         email,
         password,
+        avatar: avatar[avatar.length - 1],
       });
       console.log("resssss", res);
       updateUser({ ...currentUser, avatar, username, email });
@@ -69,19 +72,20 @@ const ProfileUpdatePage = () => {
       <div className="right">
         <img
           src={
-            avatar || "https://avatars.githubusercontent.com/u/123080253?v=4"
+            avatar[avatar.length - 1] ||
+            "https://avatars.githubusercontent.com/u/123080253?v=4"
           }
           alt=""
         />
         <UploadWidget
           uwConfig={{
-            cloudname: "rajkunwar",
-            uploadPreset: "estate",
+            cloudName: "rajkunwar",
+            uploadPreset: "estateease",
             multiple: false,
             maxImageFileSize: 2000000,
             folder: "avatars",
           }}
-          setAvatar={setAvatar}
+          setState={setAvatar}
         />
       </div>
     </div>

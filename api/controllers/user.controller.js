@@ -48,6 +48,7 @@ export const updateUser = async (req, res) => {
 
   try {
     const updatedData = { ...otherInput };
+    console.log("updated data:", updatedData);
 
     if (password) {
       updatedData.password = await bcrypt.hash(password, 10);

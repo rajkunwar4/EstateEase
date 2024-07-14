@@ -28,7 +28,7 @@ const ProfilePage = () => {
         <div className="wrapper">
           <div className="title">
             <h1>User Information</h1>
-            <Link to={"/profile/update"} >
+            <Link to={"/profile/update"}>
               <button>Update Profile</button>
             </Link>
           </div>
@@ -53,7 +53,9 @@ const ProfilePage = () => {
           </div>
           <div className="title">
             <h1>My List</h1>
-            <button>Add new post</button>
+            <Link to={"/add"}>
+              <button>Add new post</button>
+            </Link>
           </div>
           <List />
           <div className="title">
