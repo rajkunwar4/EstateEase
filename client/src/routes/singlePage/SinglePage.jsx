@@ -3,8 +3,12 @@ import "./singlePage.scss";
 import { singlePostData } from "../../lib/dummyData";
 import { userData } from "../../lib/dummyData";
 import Map from "../../components/map/Map";
+import { useLoaderData } from "react-router-dom";
 
 const SinglePage = () => {
+  const post = useLoaderData();
+  console.log(post);
+
   return (
     <div className="singlePage">
       {/* left side */}
