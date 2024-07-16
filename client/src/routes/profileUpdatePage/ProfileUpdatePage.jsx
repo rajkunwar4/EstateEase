@@ -12,8 +12,6 @@ const ProfileUpdatePage = () => {
   const [avatar, setAvatar] = useState([]);
   const navigate = useNavigate();
 
-
-
   async function handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -30,7 +28,12 @@ const ProfileUpdatePage = () => {
         avatar: avatar[avatar.length - 1],
       });
       console.log("resssss", res);
-      updateUser({ ...currentUser, avatar, username, email });
+      updateUser({
+        ...currentUser,
+        avatar: avatar[avatar.length - 1],
+        username,
+        email,
+      });
 
       navigate("/profile");
 
@@ -72,8 +75,9 @@ const ProfileUpdatePage = () => {
       <div className="right">
         <img
           src={
+            currentUser.avatar ||
             avatar[avatar.length - 1] ||
-            "https://avatars.githubusercontent.com/u/123080253?v=4"
+            "https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png"
           }
           alt=""
         />
@@ -82,7 +86,7 @@ const ProfileUpdatePage = () => {
             cloudName: "rajkunwar",
             uploadPreset: "estateease",
             multiple: false,
-            maxImageFileSize: 2000000,
+
             folder: "avatars",
           }}
           setState={setAvatar}

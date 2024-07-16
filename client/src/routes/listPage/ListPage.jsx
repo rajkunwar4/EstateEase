@@ -3,9 +3,13 @@ import { listData } from "../../lib/dummyData";
 import "./listPage.scss";
 import Card from "../../components/card/Card";
 import Map from "../../components/map/Map";
+import { listPageLoader } from "../../lib/loaders";
+import { useLoaderData } from "react-router-dom";
 
 const ListPage = () => {
-  const data = listData;
+  // const data = listData;
+  const loader=useLoaderData();
+  const data=loader
 
   return (
     <div className="listPage">
@@ -18,7 +22,7 @@ const ListPage = () => {
         </div>
       </div>
       <div className="mapContainer">
-        <Map items={data}/>
+        <Map items={data} />
       </div>
     </div>
   );
