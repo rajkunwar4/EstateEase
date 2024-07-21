@@ -1,7 +1,6 @@
 import ReactDOM from "react-dom/client";
 import React from "react";
 import HomePage from "./routes/homePage/HomePage";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ListPage from "./routes/listPage/ListPage";
 import { Layout, AuthLayout } from "./routes/layout/layout";
@@ -12,6 +11,8 @@ import Login from "./routes/login/Login";
 import ProfileUpdatePage from "./routes/profileUpdatePage/ProfileUpdatePage";
 import NewPostPage from "./routes/newPostPage/NewPostPage";
 import { listPageLoader, singlePageLoader } from "./lib/loaders";
+
+// ./routes/homePage/HomePage" from "src/App.jsx
 
 function App() {
   const router = createBrowserRouter([
