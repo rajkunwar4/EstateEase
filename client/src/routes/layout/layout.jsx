@@ -19,22 +19,5 @@ const Layout = () => {
   );
 };
 
-const AuthLayout = () => {
-  const { currentUser } = useContext(AuthContext);
-  if (!currentUser) return <Navigate to="/login" />;
-  return (
-    currentUser && (
-      <div className="layout">
-        <div className="navbar">
-          <Navbar />
-        </div>
-        <div className="content">
-          {" "}
-          <Outlet />
-        </div>
-      </div>
-    )
-  );
-};
 
-export { Layout, AuthLayout };
+export default Layout;
