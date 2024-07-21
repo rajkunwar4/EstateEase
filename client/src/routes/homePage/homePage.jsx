@@ -3,9 +3,9 @@ import SearchBar from "../../components/navbar/searchBar/SearchBar";
 import "./homePage.scss";
 import { AuthContext } from "../../context/AuthContext";
 
-const HomePage = () => {
-  const  {currentUser}  = useContext(AuthContext);
-  
+export const HomePage = () => {
+  const { currentUser } = useContext(AuthContext);
+
   return (
     <div className="homePage">
       {/* left side */}
@@ -41,5 +41,3 @@ const HomePage = () => {
     </div>
   );
 };
-
-export default HomePage;

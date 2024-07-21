@@ -45,7 +45,7 @@ const SearchBar = () => {
           </button>
         ))}
       </div>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler} name="homeSearch">
         <input
           type="text"
           name="location"

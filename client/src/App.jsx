@@ -10,7 +10,7 @@ import Login from "./routes/login/Login.jsx";
 import ProfileUpdatePage from "./routes/profileUpdatePage/ProfileUpdatePage.jsx";
 import NewPostPage from "./routes/newPostPage/NewPostPage.jsx";
 import { listPageLoader, singlePageLoader } from "./lib/loaders";
-import HomePage from "./routes/homePage/HomePage.jsx";
+import { HomePage } from "./routes/homePage/HomePage.jsx";
 
 // ./routes/homePage/HomePage" from "src/App.jsx
 
