@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ListPage from "./routes/listPage/ListPage.jsx";
-import { Layout, AuthLayout } from "./routes/layout/layout.jsx";
+import { Layout, AuthLayout } from "./routes/layout/Layout.jsx";
 import SinglePage from "./routes/singlePage/SinglePage.jsx";
 import ProfilePage from "./routes/profilePage/ProfilePage.jsx";
 import Register from "./routes/register/Register.jsx";
@@ -10,7 +10,7 @@ import Login from "./routes/login/Login.jsx";
 import ProfileUpdatePage from "./routes/profileUpdatePage/ProfileUpdatePage.jsx";
 import NewPostPage from "./routes/newPostPage/NewPostPage.jsx";
 import { listPageLoader, singlePageLoader } from "./lib/loaders";
-import { HomePage } from "./routes/homePage/HomePage.jsx";
+import HomePage from "./routes/homePage/HomePage.jsx";
 
 // ./routes/homePage/HomePage" from "src/App.jsx
 

@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import SearchBar from "../../components/navbar/searchBar/SearchBar";
+import SearchBar from "../../components/searchBar/SearchBar";
 import "./homePage.scss";
 import { AuthContext } from "../../context/AuthContext";
 
-export const HomePage = () => {
+const HomePage = () => {
   const { currentUser } = useContext(AuthContext);
 
   return (
@@ -41,3 +41,5 @@ export const HomePage = () => {
     </div>
   );
 };
+
+export default HomePage;
