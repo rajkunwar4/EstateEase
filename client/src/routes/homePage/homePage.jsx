@@ -3,7 +3,7 @@ import SearchBar from "../../components/navbar/searchBar/SearchBar";
 import "./homePage.scss";
 import { AuthContext } from "../../context/AuthContext";
 
-const homePage = () => {
+const HomePage = () => {
   const  {currentUser}  = useContext(AuthContext);
   
   return (
@@ -42,4 +42,4 @@ const homePage = () => {
   );
 };
 
-export default homePage;
+export default HomePage;
