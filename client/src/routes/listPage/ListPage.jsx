@@ -8,8 +8,8 @@ import { useLoaderData } from "react-router-dom";
 
 const ListPage = () => {
   // const data = listData;
-  const loader=useLoaderData();
-  const data=loader
+
+  const data = useLoaderData();
 
   return (
     <div className="listPage">
