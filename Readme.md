@@ -1,7 +1,7 @@
 # Estate Ease
 Estate Ease is a modern real estate application developed using the MERN stack (MongoDB, Express.js, React, Node.js). The application provides a seamless and user-friendly experience for both buyers and sellers to interact, search for properties, and manage real estate transactions.
 
-
+![Estate Ease Logo](./client/public/homess.png)
 
 
 ## Table of Contents
